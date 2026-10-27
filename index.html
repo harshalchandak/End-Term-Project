@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f0">
+  <title>StudySprint — make room to learn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="StudySprint home"><span class="brand-mark">✳</span><span>study<span class="brand-light">sprint</span></span></a>
+      <div class="workspace-label">YOUR WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span class="nav-icon">◫</span> Overview</a>
+        <a class="nav-link" href="#tasks"><span class="nav-icon">☷</span> My tasks <span class="nav-count" id="nav-count">0</span></a>
+        <a class="nav-link" href="#focus"><span class="nav-icon">◷</span> Focus room</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="quote-card"><span class="quote-mark">“</span><p>Small steps every day add up to big change.</p><span class="quote-by">YOUR DAILY REMINDER</span></div>
+        <button class="profile-button" type="button"><span class="avatar">H</span><span><strong>Hey, Harshal</strong><small>Keep your momentum</small></span><span class="more">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content" id="top">
+      <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> Overview</div><div class="top-actions"><span class="today-label" id="today-label"></span><button class="icon-button" id="export-button" type="button" title="Export your data" aria-label="Export your data">↥</button><button class="avatar avatar-small" type="button" aria-label="Profile">H</button></div></header>
+      <section class="page-heading" id="overview"><div><p class="eyebrow" id="greeting">YOUR STUDY SPACE</p><h1>Let’s make today <span>count.</span></h1><p class="subheading">A little progress is still progress. Here’s your plan.</p></div><button class="primary-button" id="add-task-top" type="button"><span>＋</span> Add a task</button></section>
+
+      <section class="stat-grid" aria-label="Study statistics">
+        <article class="stat-card"><div class="stat-top"><span>Open tasks</span><span class="stat-icon icon-lilac">☷</span></div><div class="stat-value" id="open-stat">0</div><div class="stat-note"><span class="dot dot-orange"></span><span id="due-stat">Nothing due today</span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>Focus this week</span><span class="stat-icon icon-mint">◷</span></div><div class="stat-value"><span id="focus-stat">0</span><small> min</small></div><div class="stat-note"><span class="dot dot-green"></span><span id="focus-note">Start a session to build your streak</span></div></article>
+        <article class="stat-card progress-stat"><div class="stat-top"><span>Weekly goal</span><span class="stat-icon icon-yellow">✳</span></div><div class="progress-row"><div class="stat-value"><span id="goal-stat">0</span><small> / 300 min</small></div><div class="progress-ring" id="progress-ring"><span id="goal-percent">0%</span></div></div><div class="progress-track"><span id="goal-bar"></span></div></article>
+      </section>
+
+      <section class="content-grid">
+        <div class="tasks-panel panel" id="tasks">
+          <div class="panel-heading"><div><div class="heading-title">Your priorities <span class="live-dot"></span></div><p>Stay focused on what matters most.</p></div><button class="text-button" id="view-all" type="button">View all <span>→</span></button></div>
+          <div class="filter-row"><button class="filter-chip selected" data-filter="all" type="button">All tasks</button><button class="filter-chip" data-filter="today" type="button">Due today</button><button class="filter-chip" data-filter="upcoming" type="button">Upcoming</button><button class="filter-chip" data-filter="done" type="button">Completed</button></div>
+          <div class="task-list" id="task-list"></div>
+          <button class="add-inline" id="add-task-inline" type="button"><span>＋</span> Add another task</button>
+        </div>
+        <aside class="right-column">
+          <div class="focus-card" id="focus"><div class="focus-card-top"><span class="focus-kicker">FOCUS ROOM</span><span class="focus-live"><i></i> READY WHEN YOU ARE</span></div><h2>One thing<br>at a time.</h2><p>Give your next task your full attention. You’ve got this.</p><div class="timer-display" id="timer-display">25<span>:</span>00</div><div class="timer-mode"><span class="mode-dot"></span><span id="timer-mode-label">25 min focus session</span></div><div class="timer-actions"><button id="timer-button" class="timer-button" type="button">Start focusing <span>→</span></button><button id="reset-timer" class="reset-button" type="button" title="Reset timer" aria-label="Reset timer">↺</button></div><div class="focus-footer"><span>✦ &nbsp;Deep work, one session at a time</span><button id="duration-toggle" type="button">Change duration</button></div></div>
+          <div class="tip-card"><span class="tip-icon">✦</span><div><strong>A tiny tip</strong><p>Break big assignments into smaller tasks. Starting is easier when the first step feels small.</p></div></div>
+        </aside>
+      </section>
+      <footer class="footer"><span>Made for your next small win <span class="heart">♥</span></span><span>STUDYSPRINT <b>·</b> YOUR SPACE, YOUR PACE</span></footer>
+    </main>
+  </div>
+
+  <dialog id="task-dialog" class="task-dialog"><form id="task-form"><div class="dialog-head"><div><p class="eyebrow">MAKE A PLAN</p><h2 id="dialog-title">Add a task</h2></div><button class="close-button" type="button" id="close-dialog" aria-label="Close">×</button></div><label>Task name<input id="task-title" name="title" maxlength="90" placeholder="e.g. Review lecture notes" required></label><div class="form-two"><label>Subject<input id="task-subject" name="subject" maxlength="40" placeholder="e.g. Biology" required></label><label>Due date<input id="task-date" name="dueDate" type="date" required></label></div><div class="form-two"><label>Estimated effort<select id="task-effort" name="effort"><option value="30">30 minutes</option><option value="60" selected>1 hour</option><option value="90">1.5 hours</option><option value="120">2 hours</option><option value="180">3 hours</option></select></label><label>Importance<select id="task-priority" name="priority"><option value="high">High</option><option value="medium" selected>Medium</option><option value="low">Low</option></select></label></div><p class="form-error" id="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="cancel-button" id="cancel-dialog">Cancel</button><button type="submit" class="primary-button" id="save-task">Add task <span>→</span></button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
