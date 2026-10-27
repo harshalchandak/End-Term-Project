@@ -1,0 +1,15 @@
+{
+  "name": "cartwise-mern",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c yellow,cyan \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "npm --workspace client run dev",
+    "dev:server": "npm --workspace server run dev",
+    "build": "npm --workspace client run build",
+    "test": "npm --workspace server test",
+    "start": "npm --workspace server start"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}
